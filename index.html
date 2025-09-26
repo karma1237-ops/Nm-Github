@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pour [Son Prénom] - Ta Bibliothèque Univers</title>
+    <title>Pour Nema - Ta Bibliothèque Univers</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
@@ -282,6 +282,7 @@
         .book:hover {
             transform: translateY(-8px) scale(1.03);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            filter: brightness(1.1);
         }
         .book.favori {
             border: 2px solid gold;
@@ -311,6 +312,30 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        .recommendation {
+            background: rgba(255, 245, 247, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .recommendation h2 {
+            color: #ad1457;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        .recommendation p {
+            color: #6d1b4a;
+            font-size: 1.2em;
+        }
+        .book-link {
+            color: #ad1457;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .book-link:hover {
+            color: #f06292;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -350,7 +375,7 @@
             position: fixed;
             bottom: 70px;
             right: 15px;
-            width: 100px; /* Increased from 80px */
+            width: 100px;
             text-align: center;
             animation: floatAvatar 3s ease-in-out infinite;
             z-index: 999;
@@ -361,8 +386,8 @@
             100% { transform: translateY(0); }
         }
         .avatar img {
-            width: 80px; /* Increased from 60px */
-            height: 80px; /* Increased from 60px */
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             border: 2px solid #ad1457;
             background: rgba(255, 255, 255, 0.9);
@@ -496,12 +521,12 @@
             .avatar-container {
                 bottom: 60px;
                 right: 10px;
-                width: 90px; /* Increased from 70px */
+                width: 90px;
             }
             
             .avatar img {
-                width: 70px; /* Increased from 50px */
-                height: 70px; /* Increased from 50px */
+                width: 70px;
+                height: 70px;
             }
             
             .avatar-bubble {
@@ -585,6 +610,7 @@
             <div class="loading-spinner"></div>
             <div class="loading-text">Préparation de ton univers littéraire...</div>
             <div class="loading-subtext">Pour Nema, la plus belle des histoires</div>
+            <div class="loading-quote">"Un livre est un rêve que tu tiens dans tes mains." – Neil Gaiman</div>
         </div>
     </div>
 
@@ -594,21 +620,27 @@
     </nav>
 
     <div class="container">
-        <h1>Bienvenue dans ta bibliothèque </h1>
-        <p>Explore les étagères et laisse-toi emporter...</p>
+        <h1>Bienvenue dans ta bibliothèque, Nema</h1>
+        <p>Explore les étagères et laisse-toi emporter par les histoires choisies pour toi...</p>
         
+        <!-- Recommandation du jour -->
+        <div class="recommendation">
+            <h2>Recommandation du jour</h2>
+            <p id="dailyRecommendation">Chaque jour, une nouvelle histoire t'attend. Aujourd'hui, découvre <a href="book.html?title=Orgueil et Préjugés" class="book-link">Orgueil et Préjugés</a>, un roman qui parle d'amour et de dépassement des barrières.</p>
+        </div>
+
         <!-- Section 1: Contes Mahorais -->
         <div class="section" id="contes" data-genre="Contes Mahorais">
             <h2>Contes Mahorais</h2>
             <div class="shelf">
                 <div class="book-container">
-                    <div class="book special" data-title="Les Contes du Lagon" data-message="Comme les vagues du lagon de Mayotte, ces contes bercent l'âme et font rêver d'îles paradisiaques 🌴" data-link="">
+                    <div class="book special" data-title="Les Contes du Lagon" data-message="Comme les vagues du lagon de Mayotte, ces contes bercent l'âme et font rêver d'îles paradisiaques 🌴" data-link="book.html?title=Les Contes du Lagon">
                         <img src="images/Img6.jpg" alt="Les Contes du Lagon">
                     </div>
                     <div class="book-title">Les Contes du Lagon</div>
                 </div>
                 <div class="book-container">
-                    <div class="book special" data-title="Djinns de Mayotte" data-message="Des histoires mystérieuses où les djinns dansent sous le clair de lune tropical ✨" data-link="">
+                    <div class="book special" data-title="Djinns de Mayotte" data-message="Des histoires mystérieuses où les djinns dansent sous le clair de lune tropical ✨" data-link="book.html?title=Djinns de Mayotte">
                         <img src="images/Img6.jpg" alt="Djinns de Mayotte">
                     </div>
                     <div class="book-title">Djinns de Mayotte</div>
@@ -625,19 +657,19 @@
             <h2>Romans Coup de Cœur</h2>
             <div class="shelf">
                 <div class="book-container">
-                    <div class="book special" data-title="Orgueil et Préjugés" data-message="L'amour qui triomphe des préjugés... un peu comme j'espère que notre histoire pourra s'écrire ❤️" data-link="">
+                    <div class="book special" data-title="Orgueil et Préjugés" data-message="L'amour qui triomphe des préjugés... un peu comme j'espère que notre histoire pourra s'écrire ❤️" data-link="book.html?title=Orgueil et Préjugés">
                         <img src="images/Img4.jpg" alt="Orgueil et Préjugés">
                     </div>
                     <div class="book-title">Orgueil et Préjugés</div>
                 </div>
                 <div class="book-container">
-                    <div class="book special" data-title="L'Amie Prodigieuse" data-message="Une amitié extraordinaire qui traverse le temps... comme les belles relations qui marquent notre vie 💫" data-link="">
+                    <div class="book special" data-title="L'Amie Prodigieuse" data-message="Une amitié extraordinaire qui traverse le temps... comme les belles relations qui marquent notre vie 💫" data-link="book.html?title=L'Amie Prodigieuse">
                         <img src="images/img2.jpg" alt="L'Amie Prodigieuse">
                     </div>
                     <div class="book-title">L'Amie Prodigieuse</div>
                 </div>
                 <div class="book-container">
-                    <div class="book special" data-title="Le Petit Prince" data-message="On ne voit bien qu'avec le cœur... et mon cœur te voit comme une personne exceptionnelle 🌹" data-link="">
+                    <div class="book special" data-title="Le Petit Prince" data-message="On ne voit bien qu'avec le cœur... et mon cœur te voit comme une personne exceptionnelle 🌹" data-link="book.html?title=Le Petit Prince">
                         <img src="images/Img4.jpg" alt="Le Petit Prince">
                     </div>
                     <div class="book-title">Le Petit Prince</div>
@@ -654,13 +686,13 @@
             <h2>Poésie et Émotions</h2>
             <div class="shelf">
                 <div class="book-container">
-                    <div class="book special" data-title="Les Fleurs du Mal" data-message="La beauté peut naître même dans l'obscurité... comme ton sourire illumine mes journées 🌸" data-link="">
+                    <div class="book special" data-title="Les Fleurs du Mal" data-message="La beauté peut naître même dans l'obscurité... comme ton sourire illumine mes journées 🌸" data-link="book.html?title=Les Fleurs du Mal">
                         <img src="images/img7.jpg" alt="Les Fleurs du Mal">
                     </div>
                     <div class="book-title">Les Fleurs du Mal</div>
                 </div>
                 <div class="book-container">
-                    <div class="book special" data-title="Chants d'Ombre" data-message="La poésie de Senghor, aussi douce que le ressac sur les plages de ton île natale 🌊" data-link="">
+                    <div class="book special" data-title="Chants d'Ombre" data-message="La poésie de Senghor, aussi douce que le ressac sur les plages de ton île natale 🌊" data-link="book.html?title=Chants d'Ombre">
                         <img src="images/img7.jpg" alt="Chants d'Ombre">
                     </div>
                     <div class="book-title">Chants d'Ombre</div>
@@ -677,13 +709,13 @@
             <h2>Épanouissement Personnel</h2>
             <div class="shelf">
                 <div class="book-container">
-                    <div class="book special" data-title="Les Quatre Accords Toltèques" data-message="Pour une vie plus légère et authentique... comme celle que j'aimerais partager avec toi 🕊️" data-link="">
+                    <div class="book special" data-title="Les Quatre Accords Toltèques" data-message="Pour une vie plus légère et authentique... comme celle que j'aimerais partager avec toi 🕊️" data-link="book.html?title=Les Quatre Accords Toltèques">
                         <img src="images/img8.jpg" alt="Les Quatre Accords Toltèques">
                     </div>
                     <div class="book-title">4 Accords Toltèques</div>
                 </div>
                 <div class="book-container">
-                    <div class="book special" data-title="Le Pouvoir du Moment Présent" data-message="Chaque moment passé à penser à toi est un moment précieux ⏳" data-link="">
+                    <div class="book special" data-title="Le Pouvoir du Moment Présent" data-message="Chaque moment passé à penser à toi est un moment précieux ⏳" data-link="book.html?title=Le Pouvoir du Moment Présent">
                         <img src="images/img8.jpg" alt="Le Pouvoir du Moment Présent">
                     </div>
                     <div class="book-title">Le Pouvoir du Moment Présent</div>
@@ -700,7 +732,7 @@
             <h2>📖 Livre Unique</h2>
             <div class="shelf">
                 <div class="book-container">
-                    <div class="book special" data-title="Notre Histoire" data-message="Ce livre s'écrit chaque jour que je te connais... et j'espère qu'il aura beaucoup de chapitres remplis de bonheur ! 💕" data-link="">
+                    <div class="book special" data-title="Notre Histoire" data-message="Ce livre s'écrit chaque jour que je te connais... et j'espère qu'il aura beaucoup de chapitres remplis de bonheur ! 💕" data-link="book.html?title=Notre Histoire">
                         <img src="data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"150\" viewBox=\"0 0 100 150\"><rect width=\"100\" height=\"150\" fill=\"%23ad1457\"/><text x=\"50\" y=\"75\" font-family=\"Arial\" font-size=\"12\" fill=\"white\" text-anchor=\"middle\" dominant-baseline=\"middle\">Pour Toi</text></svg>" alt="Notre Histoire">
                     </div>
                     <div class="book-title">Notre Histoire</div>
@@ -729,7 +761,7 @@
         const specialBooks = {
             "Orgueil et Préjugés": { 
                 effects: { hearts: 12, petals: 15, confetti: 8 },
-                message: "L'amour qui triomphe des préjugés... un peu comme j'espère que notre histoire pourra s'écrire ❤️"
+                message: "L'amour qui triomphe des préjugés... un peu comme j'espère que notre histoire pourra Kelley Blue Book pourra s'écrire ❤️"
             },
             "Les Contes du Lagon": { 
                 effects: { petals: 18, waves: true },
@@ -824,6 +856,16 @@
                     secretClickCount = 0;
                 }
             });
+
+            // Recommandation du jour
+            const recommendations = [
+                { title: "Les Fleurs du Mal", message: "Un recueil de poèmes qui capture la beauté dans l'obscurité, comme ton sourire illumine tout 🌸", link: "book.html?title=Les Fleurs du Mal" },
+                { title: "Le Petit Prince", message: "Un conte intemporel qui nous rappelle que l'essentiel est invisible pour les yeux 🌹", link: "book.html?title=Le Petit Prince" },
+                { title: "Notre Histoire", message: "Une histoire unique qui s'écrit avec chaque moment partagé 💕", link: "book.html?title=Notre Histoire" }
+            ];
+            const today = new Date().getDay();
+            const rec = recommendations[today % recommendations.length];
+            document.getElementById('dailyRecommendation').innerHTML = `Chaque jour, une nouvelle histoire t'attend. Aujourd'hui, découvre <a href="${rec.link}" class="book-link">${rec.title}</a>, ${rec.message.toLowerCase()}.`;
         });
 
         // Fonction pour créer des effets spéciaux
@@ -880,7 +922,7 @@
                 localStorage.setItem('favori_' + title, 'true');
 
                 if (link && link !== '') {
-                    window.open(link, '_blank');
+                    window.location.href = link;
                 }
 
                 const messageDiv = document.getElementById('message');
